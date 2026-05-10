@@ -11,13 +11,13 @@ target_include_directories(example2 PRIVATE source)
 include(FetchContent)
 FetchContent_Declare(
   cmodule
-  URL https://github.com/scapix-com/cmodule/archive/refs/tags/v2.0.3.tar.gz
-  URL_HASH SHA256=823ffd2ff2577e994c018c06c53dca709ba025f060e9273e5ecb943ff4ee70aa
+  URL https://github.com/scapix-com/cmodule/archive/refs/tags/v2.2.0.tar.gz
+  URL_HASH SHA256=b4e11cd566d340f0fbed62de2c3372498a7b508d76f7c3915a57508da3b79944
 )
 FetchContent_MakeAvailable(cmodule)
 
 # optionally override API selection
-# set(SCAPIX_JAVA_API "jdk-11" CACHE STRING "" FORCE)
+set(SCAPIX_JAVA_API "android-36" CACHE STRING "" FORCE)
 
 find_package(ScapixJavaAPI REQUIRED)
 target_link_libraries(example2 PRIVATE scapix::java_api)
