@@ -17,7 +17,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(cmodule)
 
 # optionally override API selection
-set(SCAPIX_JAVA_API "android-36" CACHE STRING "" FORCE)
+# set(SCAPIX_JAVA_API "android-37" CACHE STRING "" FORCE)
 
 find_package(ScapixJavaAPI REQUIRED)
 target_link_libraries(example2 PRIVATE scapix::java_api)
