@@ -29,6 +29,16 @@
       "name": "vs2022-clang",
       "inherits": [ "vs2022" ],
       "toolset": "clangcl"
+    },
+    {
+      "name": "vs2026",
+      "inherits": [ "default" ],
+      "generator": "Visual Studio 18 2026"
+    },
+    {
+      "name": "vs2026-clang",
+      "inherits": [ "vs2026" ],
+      "toolset": "clangcl"
     }
   ]
 }
