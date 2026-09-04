@@ -1,7 +1,7 @@
-# Example for [Scapix JNI](https://www.scapix.com/jni/)
+# Example2 for [Scapix JNI](https://www.scapix.com/jni/)
 
-[Scapix JNI](https://www.scapix.com/jni/) is a modern C++20 wrapper for Java Native Interface ([JNI](https://docs.oracle.com/en/java/javase/21/docs/specs/jni/)).
-It provides type-safe APIs and automatic resource management, with ZERO runtime overhead compared to manually written JNI code.
+[Scapix JNI](https://www.scapix.com/jni/) is a modern C++20 library for Java Native Interface ([JNI](https://docs.oracle.com/en/java/javase/25/docs/specs/jni/)).
+It provides type-safe APIs and automatic resource management, with zero runtime overhead compared to manually written JNI code.
 
 ```cpp
 // Generated C++ headers for all JDK/Android classes:
@@ -27,7 +27,7 @@ void example()
 ### Install and build this example (Windows, macOS, Linux)
 
 ```bash
-$ git clone https://github.com/scapix-com/example2
-$ cd example2
+$ git clone https://github.com/scapix-com/scapix-jni-example2
+$ cd scapix-jni-example2
 $ ./build.sh default
 ```
