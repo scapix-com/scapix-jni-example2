@@ -24,10 +24,10 @@ void example()
 }
 ```
 
-### Install and build this example (Windows, macOS, Linux)
+### Clone and build (Windows, macOS, Linux)
 
 ```bash
-$ git clone https://github.com/scapix-com/scapix-jni-example2
-$ cd scapix-jni-example2
-$ ./build.sh default
+git clone https://github.com/scapix-com/scapix-jni-example2
+cd scapix-jni-example2
+./build.sh default
 ```
