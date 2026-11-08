@@ -203,6 +203,7 @@ int main()
 	JavaVMOption options[]
 	{
 		{ const_cast<char*>("-Djava.class.path=" SCAPIX_JNI_JAR_FILE) },
+		{ const_cast<char*>("-Xcheck:jni") },
 	};
 
 	JavaVMInitArgs vm_args
