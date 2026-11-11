@@ -2,11 +2,13 @@ cmake_minimum_required(VERSION 3.20...3.27)
 
 project(example2 CXX)
 
-file(GLOB_RECURSE sources CONFIGURE_DEPENDS source/*)
+add_executable(example2)
+
+file(GLOB_RECURSE sources CONFIGURE_DEPENDS "source/*")
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${sources})
 
-add_executable(example2 ${sources})
-target_include_directories(example2 PRIVATE source)
+target_sources(example2 PRIVATE ${sources})
+target_include_directories(example2 PRIVATE "source")
 
 include(FetchContent)
 FetchContent_Declare(
