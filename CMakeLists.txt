@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20...3.27)
+cmake_minimum_required(VERSION 3.28...4.5)
 
 project(example2 CXX)
 
@@ -9,14 +9,6 @@ source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${sources})
 
 target_sources(example2 PRIVATE ${sources})
 target_include_directories(example2 PRIVATE "source")
-
-include(FetchContent)
-FetchContent_Declare(
-  cmodule
-  URL https://github.com/scapix-com/cmodule/archive/refs/tags/v2.6.0.tar.gz
-  URL_HASH SHA256=7ee432c13bf91d3c86d2ab675ba379cea079e39b9efbe183f2ab4e7b479cee90
-)
-FetchContent_MakeAvailable(cmodule)
 
 # optionally override API selection
 # set(SCAPIX_JAVA_API "android-37-test" CACHE STRING "" FORCE)
