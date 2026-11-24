@@ -66,7 +66,9 @@ void array_enumeration_example()
 {
 	// object array: ref<array<java::lang::String>>
 
-	for (auto&& i : java::util::Locale::getISOLanguages()->elements())
+	auto a1 = java::util::Locale::getISOLanguages();
+
+	for (auto&& i : *a1)
 	{
 		[[maybe_unused]] auto length = i->length();
 		i = jni::new_object<java::lang::String>();
@@ -74,7 +76,9 @@ void array_enumeration_example()
 
 	// primitive array: ref<array<jbyte>>
 
-	for (auto&& i : java::lang::System::getProperty("java.version")->getBytes()->elements())
+	auto a2 = java::lang::System::getProperty("java.version")->getBytes();
+
+	for (auto&& i : a2->elements())
 	{
 		i = 5;
 	}
