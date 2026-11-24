@@ -45,10 +45,6 @@ void array_example()
 	auto a1 = java::util::Locale::getISOLanguages();
 	jni::ref<jni::array<java::lang::String>> a2 = java::util::Locale::getISOLanguages();
 
-	// Additional supported array type syntax (not for nested arrays, C++ doesn't allow T[][] type):
-
-	jni::ref<java::lang::String[]> a3 = java::util::Locale::getISOLanguages();
-
 	// It is converted only if you assign such a reference to a corresponding C++ type:
 
 	std::vector<std::string> languages = java::util::Locale::getISOLanguages();
@@ -68,7 +64,7 @@ void array_example()
 
 void array_enumeration_example()
 {
-	// object array: ref<java::lang::String[]>
+	// object array: ref<array<java::lang::String>>
 
 	for (auto&& i : java::util::Locale::getISOLanguages()->elements())
 	{
@@ -76,7 +72,7 @@ void array_enumeration_example()
 		i = jni::new_object<java::lang::String>();
 	}
 
-	// primitive array: ref<jbyte[]>
+	// primitive array: ref<array<jbyte>>
 
 	for (auto&& i : java::lang::System::getProperty("java.version")->getBytes()->elements())
 	{
@@ -89,7 +85,7 @@ void array_enumeration_example()
 
 std::map<std::string, std::string> cvt(jni::ref<java::util::Map> map)
 {
-	return jni::convert_cpp<std::map<std::string, std::string>>(jni::ref<jni::generic_type<jni::java_util_map, java::lang::String, java::lang::String>>(map));
+	return jni::convert_cpp<std::map<std::string, std::string>>(jni::ref<jni::parameterized<jni::java_util_map, java::lang::String, java::lang::String>>(map));
 }
 
 void map_example()

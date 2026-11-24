@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.28...4.5)
 
-project(example2 CXX)
+project(example2 LANGUAGES CXX)
 
 add_executable(example2)
 
