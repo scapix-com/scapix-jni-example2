@@ -71,14 +71,14 @@ void array_enumeration_example()
 	for (auto&& i : *a1)
 	{
 		[[maybe_unused]] auto length = i->length();
-		i = jni::new_object<java::lang::String>();
+		i = java::lang::String::new_object();
 	}
 
 	// primitive array: ref<array<jbyte>>
 
 	auto a2 = java::lang::System::getProperty("java.version")->getBytes();
 
-	for (auto&& i : a2->elements())
+	for (auto&& i : a2->writable_elements())
 	{
 		i = 5;
 	}
@@ -108,18 +108,18 @@ void map_test()
 
 	std::map<jni::global_ref<java::lang::String>, std::string> map;
 
-	map.emplace(jni::string::new_object("Java string 1"), "C++ string 1");
-	map.emplace(jni::string::new_object("Java string 2"), "C++ string 2");
-	map.emplace(jni::string::new_object("Java string 5"), "C++ string 5");
-	map.emplace(jni::string::new_object("Java string 4"), "C++ string 4");
-	map.emplace(jni::string::new_object("Java string 3"), "C++ string 3");
+	map.emplace(jni::string::new_string_utf("Java string 1"), "C++ string 1");
+	map.emplace(jni::string::new_string_utf("Java string 2"), "C++ string 2");
+	map.emplace(jni::string::new_string_utf("Java string 5"), "C++ string 5");
+	map.emplace(jni::string::new_string_utf("Java string 4"), "C++ string 4");
+	map.emplace(jni::string::new_string_utf("Java string 3"), "C++ string 3");
 
 	std::cout << "map_test:\n";
 
 	// Keys compared using java.lang.Comparable.compareTo(),
 	// so different objects with the same value compare equal.
 
-	if (const auto& i = map.find(jni::string::new_object("Java string 3")); i != map.end())
+	if (const auto& i = map.find(jni::string::new_string_utf("Java string 3")); i != map.end())
 		std::cout << "found value = " << i->second << "\n";
 
 	std::cout << "all values:\n";
@@ -135,15 +135,15 @@ void unordered_map_identity()
 
 	std::unordered_map<jni::global_ref<java::lang::String>, std::string> map;
 
-	map.emplace(jni::string::new_object("Java string 1"), "C++ string 1");
-	map.emplace(jni::string::new_object("Java string 2"), "C++ string 2");
-	map.emplace(jni::string::new_object("Java string 5"), "C++ string 5");
-	map.emplace(jni::string::new_object("Java string 4"), "C++ string 4");
-	map.emplace(jni::string::new_object("Java string 3"), "C++ string 3");
+	map.emplace(jni::string::new_string_utf("Java string 1"), "C++ string 1");
+	map.emplace(jni::string::new_string_utf("Java string 2"), "C++ string 2");
+	map.emplace(jni::string::new_string_utf("Java string 5"), "C++ string 5");
+	map.emplace(jni::string::new_string_utf("Java string 4"), "C++ string 4");
+	map.emplace(jni::string::new_string_utf("Java string 3"), "C++ string 3");
 
 	std::cout << "unordered_map_identity:\n";
 
-	if (const auto& i = map.find(jni::string::new_object("Java string 3")); i != map.end())
+	if (const auto& i = map.find(jni::string::new_string_utf("Java string 3")); i != map.end())
 		std::cout << "found value = " << i->second << "\n";
 
 	std::cout << "all values:\n";
@@ -159,15 +159,15 @@ void unordered_map_value()
 
 	std::unordered_map<jni::global_ref<java::lang::String>, std::string, jni::ref_value_hash<java::lang::String>, jni::ref_value_equal<java::lang::String>> map;
 
-	map.emplace(jni::string::new_object("Java string 1"), "C++ string 1");
-	map.emplace(jni::string::new_object("Java string 2"), "C++ string 2");
-	map.emplace(jni::string::new_object("Java string 5"), "C++ string 5");
-	map.emplace(jni::string::new_object("Java string 4"), "C++ string 4");
-	map.emplace(jni::string::new_object("Java string 3"), "C++ string 3");
+	map.emplace(jni::string::new_string_utf("Java string 1"), "C++ string 1");
+	map.emplace(jni::string::new_string_utf("Java string 2"), "C++ string 2");
+	map.emplace(jni::string::new_string_utf("Java string 5"), "C++ string 5");
+	map.emplace(jni::string::new_string_utf("Java string 4"), "C++ string 4");
+	map.emplace(jni::string::new_string_utf("Java string 3"), "C++ string 3");
 
 	std::cout << "unordered_map_value:\n";
 
-	if (const auto& i = map.find(jni::string::new_object("Java string 3")); i != map.end())
+	if (const auto& i = map.find(jni::string::new_string_utf("Java string 3")); i != map.end())
 		std::cout << "found value = " << i->second << "\n";
 
 	std::cout << "all values:\n";
@@ -180,8 +180,8 @@ void exception_example()
 {
 	try
 	{
-		auto file = jni::new_object<java::io::File>("/file.txt");
-		auto reader = jni::new_object<java::io::FileReader>(file);
+		auto file = java::io::File::new_object("/file.txt");
+		auto reader = java::io::FileReader::new_object(file);
 	}
 	catch (const jni::vm_exception& e)
 	{
